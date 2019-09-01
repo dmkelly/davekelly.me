@@ -8,15 +8,17 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-
+import { FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa"
 import { rhythm } from "../utils/typography"
+import BioFact from './bioFact'
+import SocialIcon from './socialIcon'
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 200, height: 200) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -24,6 +26,8 @@ const Bio = () => {
       site {
         siteMetadata {
           author
+          description
+          location
           social {
             twitter
           }
@@ -32,11 +36,12 @@ const Bio = () => {
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author, description, location, social } = data.site.siteMetadata
   return (
     <div
       style={{
         display: `flex`,
+        flexDirection: `column`,
         marginBottom: rhythm(2.5),
       }}
     >
@@ -44,23 +49,27 @@ const Bio = () => {
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
         style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
+          marginBottom: rhythm(1 / 2),
+          minWidth: 200,
           borderRadius: `100%`,
         }}
         imgStyle={{
           borderRadius: `50%`,
         }}
       />
-      <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
-        </a>
-      </p>
+      <div>
+        <h3>{author}</h3>
+        <p>{description}</p>
+        <BioFact Icon={FaMapMarkerAlt}>{location}</BioFact>
+        <div
+          style={{
+            display: 'flex'
+          }}
+        >
+          <SocialIcon to={`https://github.com/${social.github}`} Icon={FaGithub} />
+          <SocialIcon to={`https://linkedin.com/in/${social.linkedin}`} Icon={FaLinkedin} />
+        </div>
+      </div>
     </div>
   )
 }
