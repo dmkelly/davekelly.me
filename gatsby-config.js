@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Dave's tech blog`,
+    title: `Dave's Blog`,
     author: `Dave Kelly`,
     description: `Dave's approach to building web applications.`,
     location: `Boston, MA`,
-    siteUrl: `https://davekelly.me/`,
+    blogPrefix: 'posts',
+    siteUrl: `https://davekelly.me`,
     social: {
       github: `dmkelly`,
       linkedin: `thedavekelly`,
@@ -59,8 +60,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Dave's Blog`,
+        short_name: `DaveKelly.me`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -82,5 +83,7 @@ module.exports = {
         // Add any options here
       },
     },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-catch-links`,
   ],
 }

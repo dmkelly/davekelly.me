@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-import { FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaMapMarkerAlt, FaRss, FaFileAlt } from "react-icons/fa"
 import { rhythm } from "../utils/typography"
 import BioFact from "./bioFact"
 import SocialIcon from "./socialIcon"
@@ -72,8 +72,16 @@ const Bio = () => {
             Icon={FaLinkedin}
             title="LinkedIn"
           />
-          {/* TODO - Resume
-          TODO - RSS */}
+          <SocialIcon
+            to="/kelly-resume.pdf"
+            Icon={FaFileAlt}
+            title="Feed"
+          />
+          <SocialIcon
+            to="/rss.xml"
+            Icon={FaRss}
+            title="Feed"
+          />
         </div>
       </div>
     </div>
