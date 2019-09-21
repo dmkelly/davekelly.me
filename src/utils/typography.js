@@ -2,9 +2,7 @@ import Typography from "typography"
 import Theme from "typography-theme-github"
 import CodePlugin from "typography-plugin-code"
 
-Theme.plugins = [
-  new CodePlugin()
-]
+Theme.plugins = [new CodePlugin()]
 
 const typography = new Typography(Theme)
 

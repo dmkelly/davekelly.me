@@ -1,17 +1,10 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa"
 import { rhythm } from "../utils/typography"
-import BioFact from './bioFact'
-import SocialIcon from './socialIcon'
+import BioFact from "./bioFact"
+import SocialIcon from "./socialIcon"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -29,7 +22,8 @@ const Bio = () => {
           description
           location
           social {
-            twitter
+            github
+            linkedin
           }
         }
       }
@@ -37,6 +31,7 @@ const Bio = () => {
   `)
 
   const { author, description, location, social } = data.site.siteMetadata
+
   return (
     <div
       style={{
@@ -63,11 +58,22 @@ const Bio = () => {
         <BioFact Icon={FaMapMarkerAlt}>{location}</BioFact>
         <div
           style={{
-            display: 'flex'
+            display: "flex",
+            fontSize: rhythm(1.5),
           }}
         >
-          <SocialIcon to={`https://github.com/${social.github}`} Icon={FaGithub} />
-          <SocialIcon to={`https://linkedin.com/in/${social.linkedin}`} Icon={FaLinkedin} />
+          <SocialIcon
+            to={`https://github.com/${social.github}`}
+            Icon={FaGithub}
+            title="GitHub"
+          />
+          <SocialIcon
+            to={`https://linkedin.com/in/${social.linkedin}`}
+            Icon={FaLinkedin}
+            title="LinkedIn"
+          />
+          {/* TODO - Resume
+          TODO - RSS */}
         </div>
       </div>
     </div>

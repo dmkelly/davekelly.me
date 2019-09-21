@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import { rhythm } from "../utils/typography"
 
 export default function BioFact({ Icon, children }) {
@@ -6,13 +6,13 @@ export default function BioFact({ Icon, children }) {
     <div
       style={{
         display: `flex`,
-        alignItems: 'center',
-        marginBottom: rhythm(1 / 2)
+        alignItems: "center",
+        marginBottom: rhythm(1 / 2),
       }}
     >
       <div
         style={{
-          marginRight: rhythm(1 / 4)
+          marginRight: rhythm(1 / 4),
         }}
       >
         <Icon />

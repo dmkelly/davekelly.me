@@ -1,10 +1,16 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-
+import { graphql } from "gatsby"
+import styled from "styled-components"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import PostNav from "../components/postNav"
 import { rhythm, scale } from "../utils/typography"
+
+const Title = styled.h1`
+  margin-top: ${rhythm(1)}px;
+  margin-bottom: 0;
+`
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -20,14 +26,7 @@ class BlogPostTemplate extends React.Component {
         />
         <article>
           <header>
-            <h1
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: 0,
-              }}
-            >
-              {post.frontmatter.title}
-            </h1>
+            <Title>{post.frontmatter.title}</Title>
             <p
               style={{
                 ...scale(-1 / 5),
@@ -49,32 +48,7 @@ class BlogPostTemplate extends React.Component {
           </footer>
         </article>
 
-        <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            {previous && (
-              <li>
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              </li>
-            )}
-            {next && (
-              <li>
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              </li>
-            )}
-          </ul>
-        </nav>
+        <PostNav next={next} previous={previous} />
       </Layout>
     )
   }

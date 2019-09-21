@@ -15,7 +15,7 @@ class NotFoundPage extends React.Component {
         <h1>Not Found</h1>
         <p>This page doesn&#39;t exist...</p>
         <p>
-          <Link to='/'>Go Back</Link>
+          <Link to="/">Go Back</Link>
         </p>
       </Layout>
     )

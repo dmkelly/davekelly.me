@@ -1,7 +1,9 @@
-import React from 'react'
+import React from "react"
 
-export default function ExternalLink({ to, children }) {
+export default function ExternalLink({ to, children, title, style }) {
   return (
-    <a href={to} rel="noopener noreferrer">{children}</a>
+    <a style={style} href={to} title={title} rel="noopener noreferrer">
+      {children}
+    </a>
   )
 }
