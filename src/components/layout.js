@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from 'styled-components'
-import { BREAKPOINT } from '../utils/scaffolding'
+import styled from "styled-components"
+import { BREAKPOINT } from "../utils/scaffolding"
 import { rhythm } from "../utils/typography"
-import Background from './background'
+import Background from "./background"
 
 const Container = styled.div`
   display: flex;
@@ -50,9 +50,7 @@ class Layout extends React.Component {
           <Body>
             <header>{header}</header>
             <main>{children}</main>
-            <footer>
-              © {new Date().getFullYear()}, Dave Kelly
-            </footer>
+            <footer>© {new Date().getFullYear()}, Dave Kelly</footer>
           </Body>
         </Container>
       </Background>

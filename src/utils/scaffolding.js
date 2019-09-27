@@ -1,3 +1,3 @@
-import { rhythm } from './typography'
+import { rhythm } from "./typography"
 
-export const BREAKPOINT = rhythm(24);
+export const BREAKPOINT = rhythm(24)

@@ -4,7 +4,7 @@ module.exports = {
     author: `Dave Kelly`,
     description: `Dave's approach to building web applications.`,
     location: `Boston, MA`,
-    blogPrefix: 'posts',
+    blogPrefix: "posts",
     siteUrl: `https://davekelly.me`,
     social: {
       github: `dmkelly`,

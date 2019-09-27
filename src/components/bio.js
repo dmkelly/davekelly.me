@@ -1,8 +1,14 @@
 import React from "react"
-import styled from 'styled-components'
+import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-import { FaGithub, FaLinkedin, FaMapMarkerAlt, FaRss, FaFileAlt } from "react-icons/fa"
+import {
+  FaGithub,
+  FaLinkedin,
+  FaMapMarkerAlt,
+  FaRss,
+  FaFileAlt,
+} from "react-icons/fa"
 import { rhythm } from "../utils/typography"
 import BioFact from "./bioFact"
 import SocialIcon from "./socialIcon"
@@ -47,7 +53,7 @@ const Bio = () => {
           }
         }
       }
-      pdf: file(absolutePath: { regex: "/kelly-resume.pdf/"}) {
+      pdf: file(absolutePath: { regex: "/kelly-resume.pdf/" }) {
         publicURL
         name
       }
@@ -92,16 +98,8 @@ const Bio = () => {
               Icon={FaLinkedin}
               title="LinkedIn"
             />
-            <SocialIcon
-              to={data.pdf.publicURL}
-              Icon={FaFileAlt}
-              title="Feed"
-            />
-            <SocialIcon
-              to="/rss.xml"
-              Icon={FaRss}
-              title="Feed"
-            />
+            <SocialIcon to={data.pdf.publicURL} Icon={FaFileAlt} title="Feed" />
+            <SocialIcon to="/rss.xml" Icon={FaRss} title="Feed" />
           </div>
         </div>
       </Split>
