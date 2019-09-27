@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import Layout from "../components/layout"
-import TwoColumn from "../components/twoColumn"
 import SEO from "../components/seo"
 import Bio from "../components/bio"
 import PostsList from "../components/postsList"
+
+import '../style.css'
 
 class BlogIndex extends React.Component {
   render() {
@@ -15,8 +15,9 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
-        <TwoColumn left={<Bio />} right={<PostsList posts={posts} />} />
+        <SEO title={siteTitle} />
+        <Bio />
+        <PostsList posts={posts} />
       </Layout>
     )
   }
