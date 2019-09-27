@@ -10,6 +10,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "1.10.6",
     "gatsby": "^2.13.67",
+    "gatsby-background-image": "0.8.12",
     "gatsby-image": "^2.2.8",
     "gatsby-plugin-catch-links": "2.1.10",
     "gatsby-plugin-feed": "^2.3.6",
@@ -29,6 +30,7 @@
     "gatsby-source-filesystem": "^2.1.9",
     "gatsby-transformer-remark": "^2.6.14",
     "gatsby-transformer-sharp": "^2.2.6",
+    "intersection-observer": "0.7.0",
     "prismjs": "^1.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
