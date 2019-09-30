@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { BREAKPOINT } from "../../utils/scaffolding"
 import { rhythm } from "../../utils/typography"
 import Background from "../backgrounds/cityStorm"
 
@@ -11,7 +10,7 @@ const Container = styled.div`
 `
 
 const Body = styled.div`
-  max-width: ${BREAKPOINT};
+  max-width: 46rem;
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
   background-color: rgba(255, 255, 255, 0.8);
 `
