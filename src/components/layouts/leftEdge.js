@@ -1,13 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { BREAKPOINT } from "../utils/scaffolding"
-import { rhythm } from "../utils/typography"
-import Background from "./background"
+import { BREAKPOINT } from "../../utils/scaffolding"
+import { rhythm } from "../../utils/typography"
+import Background from "../backgrounds/cityRight"
 
 const Container = styled.div`
   display: flex;
-  justify-content: flex-end;
 `
 
 const Body = styled.div`

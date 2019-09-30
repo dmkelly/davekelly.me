@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import Layout from "../components/layout"
+import Layout from "../components/layouts/center"
 import SEO from "../components/seo"
 import PostNav from "../components/postNav"
 import { rhythm, scale } from "../utils/typography"
