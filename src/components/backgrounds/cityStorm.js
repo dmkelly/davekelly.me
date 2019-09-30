@@ -7,7 +7,7 @@ const BackgroundSection = ({ className, children }) => (
   <StaticQuery
     query={graphql`
       query {
-        desktop: file(absolutePath: { regex: "/background.jpg/" }) {
+        background: file(absolutePath: { regex: "/background-alt.jpg/" }) {
           childImageSharp {
             fluid(quality: 90, maxWidth: 1920) {
               ...GatsbyImageSharpFluid_withWebp
@@ -17,7 +17,7 @@ const BackgroundSection = ({ className, children }) => (
       }
     `}
     render={data => {
-      const imageData = data.desktop.childImageSharp.fluid
+      const imageData = data.background.childImageSharp.fluid
 
       return (
         <BackgroundImage

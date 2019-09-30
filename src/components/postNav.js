@@ -6,6 +6,7 @@ const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0 0 1rem 0;
   list-style: none;
   padding: 0;
 `
@@ -14,12 +15,14 @@ function PostNav({ next, previous }) {
   return (
     <nav>
       <List>
-        {previous && (
+        {previous ? (
           <li>
             <Link to={previous.fields.slug} rel="prev">
               ← {previous.frontmatter.title}
             </Link>
           </li>
+        ) : (
+          <li />
         )}
         {next && (
           <li>
