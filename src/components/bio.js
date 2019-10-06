@@ -42,6 +42,11 @@ const Bio = () => {
           }
         }
       }
+      bio: file(absolutePath: { regex: "/bio.md/" }) {
+        childMarkdownRemark {
+          html
+        }
+      }
       site {
         siteMetadata {
           author
@@ -60,7 +65,8 @@ const Bio = () => {
     }
   `)
 
-  const { author, description, location, social } = data.site.siteMetadata
+  const { author, location, social } = data.site.siteMetadata
+  const bio = data.bio.childMarkdownRemark.html
 
   return (
     <Container>
@@ -103,7 +109,7 @@ const Bio = () => {
           </div>
         </div>
       </Split>
-      <p>{description}</p>
+      <section dangerouslySetInnerHTML={{ __html: bio }} />
     </Container>
   )
 }

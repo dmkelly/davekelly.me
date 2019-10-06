@@ -1,3 +1,4 @@
+import "../style.css"
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layouts/leftEdge"
@@ -5,16 +6,14 @@ import SEO from "../components/seo"
 import Bio from "../components/bio"
 import PostsList from "../components/postsList"
 
-import "../style.css"
-
 class BlogIndex extends React.Component {
   render() {
-    const { data } = this.props
+    const { data, location } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={location} title={siteTitle}>
         <SEO title={siteTitle} />
         <Bio />
         <PostsList posts={posts} />
@@ -32,7 +31,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           excerpt
