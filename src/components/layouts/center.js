@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { rhythm } from "../../utils/typography"
 import Background from "../backgrounds/cityStorm"
+import Footer from "../footer"
 
 const Container = styled.div`
   display: flex;
@@ -49,7 +50,7 @@ class Layout extends React.Component {
           <Body>
             <header>{header}</header>
             <main>{children}</main>
-            <footer>© {new Date().getFullYear()}, Dave Kelly</footer>
+            <Footer />
           </Body>
         </Container>
       </Background>
