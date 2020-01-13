@@ -1,3 +1,3 @@
 Cofounder [Blogist LLC](https://blogist.co)
 
-My approach to building web applications.
+I intend to use this blog to share my approach to building web applications.

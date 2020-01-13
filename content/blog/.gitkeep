@@ -1,0 +1,1 @@
+Each folder in the content/blog folder should represent a post. The blog content should be written in an index.md file and any images specific to a post should be in the same folder and linked using a relative path.
