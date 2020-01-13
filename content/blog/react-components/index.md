@@ -32,17 +32,16 @@ Let's try out this approach with an example. Consider a Dropdown component: It c
 
 First consider the more granular functionalities that make up this component:
 
-* Handling a click to toggle the menu visibility
-* Animating the collapse/expansion of the menu
-* Displaying each option in the menu and handling its selction
-* Containing the list of options
-* Handling the functionality to close the menu when the user clicks elsewhere on the page
-* Combining all of this functionality into a reusable component
+- Handling a click to toggle the menu visibility
+- Animating the collapse/expansion of the menu
+- Displaying each option in the menu and handling its selction
+- Containing the list of options
+- Handling the functionality to close the menu when the user clicks elsewhere on the page
+- Combining all of this functionality into a reusable component
 
 ### Handling the click toggle
 
 We need a target element that users can interact with to toggle the dropdown. This can be a button component that accepts an `onClick` handler
 
 ```js
-
 ```
