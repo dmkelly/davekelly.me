@@ -11,13 +11,13 @@ const List = styled.ul`
   padding: 0;
 `
 
-function PostNav({ next, previous }) {
+function PostNav({ basePath, next, previous }) {
   return (
     <nav>
       <List>
         {previous ? (
           <li>
-            <Link to={previous.fields.slug} rel="prev">
+            <Link to={`${basePath}${previous.fields.slug}`} rel="prev">
               ← {previous.frontmatter.title}
             </Link>
           </li>
@@ -26,7 +26,7 @@ function PostNav({ next, previous }) {
         )}
         {next && (
           <li>
-            <Link to={next.fields.slug} rel="next">
+            <Link to={`${basePath}${next.fields.slug}`} rel="next">
               {next.frontmatter.title} →
             </Link>
           </li>

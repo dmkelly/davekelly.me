@@ -9,14 +9,14 @@ import PostsList from "../components/postsList"
 class BlogIndex extends React.Component {
   render() {
     const { data, location } = this.props
-    const siteTitle = data.site.siteMetadata.title
+    const { blogPrefix, title: siteTitle } = data.site.siteMetadata
     const posts = data.allMarkdownRemark.edges
 
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title={siteTitle} />
         <Bio />
-        <PostsList posts={posts} />
+        <PostsList basePath={`/${blogPrefix}`} posts={posts} />
       </Layout>
     )
   }
@@ -29,6 +29,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        blogPrefix
       }
     }
     allMarkdownRemark(

@@ -104,7 +104,11 @@ const Bio = () => {
               Icon={FaLinkedin}
               title="LinkedIn"
             />
-            <SocialIcon to={data.pdf.publicURL} Icon={FaFileAlt} title="Resume" />
+            <SocialIcon
+              to={data.pdf.publicURL}
+              Icon={FaFileAlt}
+              title="Resume"
+            />
             <SocialIcon to="/rss.xml" Icon={FaRss} title="Feed" />
           </div>
         </div>
