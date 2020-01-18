@@ -3,16 +3,16 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layouts/center"
 import SEO from "../components/seo"
 
-class NotFoundPage extends React.Component {
+class Now extends React.Component {
   render() {
     const { data, location } = this.props
     const siteTitle = data.site.siteMetadata.title
 
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="Page Not Found" />
-        <h1>Not Found</h1>
-        <p>This page doesn&#39;t exist...</p>
+        <SEO title="Now" />
+        <h1>Now</h1>
+        <p>I'm the cofounder of Blogist LLC</p>
         <p>
           <Link to="/">Go Back</Link>
         </p>
@@ -21,7 +21,7 @@ class NotFoundPage extends React.Component {
   }
 }
 
-export default NotFoundPage
+export default Now
 
 export const pageQuery = graphql`
   query {
