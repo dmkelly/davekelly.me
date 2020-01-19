@@ -21,9 +21,16 @@ const Container = styled.div`
 
 const Split = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
   > * {
     width: 50%;
+  }
+
+  @media screen and (max-width: 480px) {
+    > * {
+      width: 100%;
+    }
   }
 `
 
