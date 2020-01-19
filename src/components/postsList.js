@@ -16,7 +16,10 @@ function PostsList({ posts, basePath }) {
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link style={{ boxShadow: `none` }} to={`${basePath}${node.fields.slug}`}>
+                <Link
+                  style={{ boxShadow: `none` }}
+                  to={`${basePath}${node.fields.slug}`}
+                >
                   {title}
                 </Link>
               </h3>

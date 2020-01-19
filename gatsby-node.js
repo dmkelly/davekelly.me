@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const postBasePath = result.data.site.siteMetadata.blogPrefix;
+  const postBasePath = result.data.site.siteMetadata.blogPrefix
   const posts = result.data.allMarkdownRemark.edges
 
   posts.forEach((post, index) => {

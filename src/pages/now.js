@@ -7,7 +7,7 @@ class Now extends React.Component {
   render() {
     const { data, location } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const {html} = data.markdownRemark;
+    const { html } = data.markdownRemark
 
     return (
       <Layout location={location} title={siteTitle}>
@@ -31,7 +31,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fileAbsolutePath: {regex: "/now.md/"}) {
+    markdownRemark(fileAbsolutePath: { regex: "/now.md/" }) {
       html
     }
   }
