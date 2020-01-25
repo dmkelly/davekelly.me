@@ -7,7 +7,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const result = await graphql(
     `
-      {
+      query {
+        site {
+          siteMetadata {
+            blogPrefix
+          }
+        }
         allMarkdownRemark(
           filter: { fileAbsolutePath: { regex: "/blog/" } }
           sort: { fields: [frontmatter___date], order: DESC }
@@ -33,6 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
+  const postBasePath = result.data.site.siteMetadata.blogPrefix
   const posts = result.data.allMarkdownRemark.edges
 
   posts.forEach((post, index) => {
@@ -40,7 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: post.node.fields.slug,
+      path: `${postBasePath}${post.node.fields.slug}`,
       component: blogPost,
       context: {
         slug: post.node.fields.slug,

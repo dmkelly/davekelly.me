@@ -14,7 +14,7 @@ const Title = styled.h1`
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
+    const { blogPrefix, title: siteTitle } = this.props.data.site.siteMetadata
     const { previous, next } = this.props.pageContext
 
     return (
@@ -44,7 +44,7 @@ class BlogPostTemplate extends React.Component {
           />
         </article>
 
-        <PostNav next={next} previous={previous} />
+        <PostNav basePath={`/${blogPrefix}`} next={next} previous={previous} />
       </Layout>
     )
   }
@@ -58,6 +58,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        blogPrefix
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

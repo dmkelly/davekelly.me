@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
 
-function PostsList({ posts }) {
+function PostsList({ posts, basePath }) {
   return (
     <React.Fragment>
       {posts.map(({ node }) => {
@@ -16,7 +16,10 @@ function PostsList({ posts }) {
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                <Link
+                  style={{ boxShadow: `none` }}
+                  to={`${basePath}${node.fields.slug}`}
+                >
                   {title}
                 </Link>
               </h3>

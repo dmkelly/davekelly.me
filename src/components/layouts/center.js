@@ -11,7 +11,9 @@ const Container = styled.div`
 `
 
 const Body = styled.div`
+  width: 100%;
   max-width: 46rem;
+  min-height: 100vh;
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
   background-color: rgba(255, 255, 255, 0.8);
 `

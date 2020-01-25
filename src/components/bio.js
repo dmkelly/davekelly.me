@@ -21,9 +21,16 @@ const Container = styled.div`
 
 const Split = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
   > * {
     width: 50%;
+  }
+
+  @media screen and (max-width: 480px) {
+    > * {
+      width: 100%;
+    }
   }
 `
 
@@ -104,7 +111,11 @@ const Bio = () => {
               Icon={FaLinkedin}
               title="LinkedIn"
             />
-            <SocialIcon to={data.pdf.publicURL} Icon={FaFileAlt} title="Feed" />
+            <SocialIcon
+              to={data.pdf.publicURL}
+              Icon={FaFileAlt}
+              title="Resume"
+            />
             <SocialIcon to="/rss.xml" Icon={FaRss} title="Feed" />
           </div>
         </div>

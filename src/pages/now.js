@@ -3,16 +3,17 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layouts/center"
 import SEO from "../components/seo"
 
-class NotFoundPage extends React.Component {
+class Now extends React.Component {
   render() {
     const { data, location } = this.props
     const siteTitle = data.site.siteMetadata.title
+    const { html } = data.markdownRemark
 
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="Page Not Found" />
-        <h1>Not Found</h1>
-        <p>This page doesn&#39;t exist...</p>
+        <SEO title="Now" />
+        <h1>Now</h1>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
         <p>
           <Link to="/">Go Back</Link>
         </p>
@@ -21,7 +22,7 @@ class NotFoundPage extends React.Component {
   }
 }
 
-export default NotFoundPage
+export default Now
 
 export const pageQuery = graphql`
   query {
@@ -29,6 +30,9 @@ export const pageQuery = graphql`
       siteMetadata {
         title
       }
+    }
+    markdownRemark(fileAbsolutePath: { regex: "/now.md/" }) {
+      html
     }
   }
 `
