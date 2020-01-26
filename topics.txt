@@ -1,0 +1,15 @@
+# Blog Post Ideas
+
+- How I learn a new technology
+- How I use React
+    - How do I scope a component
+- How do I scope CSS to prevent it from becoming append-only
+- How I use Redux
+- How I prototype applications
+    - Start in mongo + mongoose
+    - Data eventually becomes relational - mongres
+- How I decide whether to pursue a project
+    - Product market fit - talking to prospects/mom test
+    - Is it interesting to me (not necessarily industry, but the problems)
+    - Breaking down high level finish line into execution plan
+- How I track exceptions

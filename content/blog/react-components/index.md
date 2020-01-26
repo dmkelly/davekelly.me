@@ -28,7 +28,7 @@ I've found that when following this approach, pure functional components will be
 
 ## Example
 
-Let's try out this approach with an example. Consider a Dropdown component: It contains a target that users can click to expand and show a list of clickable options in the menu.
+For example, consider a Dropdown component: It contains a target that users can click to expand and show a list of clickable options in the menu.
 
 Consider the more granular functionalities that make up this component:
 
@@ -38,3 +38,5 @@ Consider the more granular functionalities that make up this component:
 - Containing the list of options
 - Handling the functionality to close the menu when the user clicks elsewhere on the page
 - Combining all of this functionality into a reusable component
+
+![Dropdown component broken down into more granular functionalities](./dropdown.png)

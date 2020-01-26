@@ -20,7 +20,7 @@ As I became more familiar with the codebase and workings of Gatsby, I added a [n
 
 This website is hosted on [Github Pages](https://pages.github.com/) and uses a [Github Action](https://github.com/features/actions) to automatically deploy the latest commit on the project's `master` branch to Github pages. This project is my first time using Github actions and I'm impressed with the available ecosystem. There are available actions in the [marketplace](https://github.com/marketplace?type=actions) to help support a wide variety of workflows and tasks. This website's deploy workflow uses actions to [checkout the codebase](https://github.com/marketplace/actions/checkout), [setup a Node environment](https://github.com/marketplace/actions/setup-node-js-for-use-with-actions), and [deploy assets to Github Pages](https://github.com/marketplace/actions/deploy-to-github-pages). The entire workflow is defined in a yaml file as follows:
 
-```yml
+```yaml
 name: Deploy
 on:
   push:
