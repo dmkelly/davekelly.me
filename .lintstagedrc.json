@@ -1,3 +1,6 @@
 {
-  "**/*.{css,js,json,md}": "prettier --write \"**/*.{css,js,json,md}\""
+  "**/*.{css,js,json,md}": [
+    "prettier --write \"**/*.{css,js,json,md}\"",
+    "git add"
+  ]
 }

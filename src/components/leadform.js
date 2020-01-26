@@ -89,7 +89,12 @@ export default class LeadForm extends React.Component {
               Thank you for subscribing! We&apos;ll be sure to send some great
               content your way.
             </p>
-          ) : null}
+          ) : (
+            <p>
+              Subscribe to get new posts right to your inbox on Saturday
+              mornings&hellip; sometimes
+            </p>
+          )}
           <BotsOnly aria-hidden="true">
             {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
             <input
