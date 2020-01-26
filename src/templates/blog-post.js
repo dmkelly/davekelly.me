@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layouts/center"
 import SEO from "../components/seo"
@@ -23,6 +23,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
+        <Link to="/">← Back to Home</Link>
         <article>
           <header>
             <Title>{post.frontmatter.title}</Title>
