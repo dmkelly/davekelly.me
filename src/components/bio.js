@@ -65,10 +65,6 @@ const Bio = () => {
           }
         }
       }
-      pdf: file(absolutePath: { regex: "/kelly-resume.pdf/" }) {
-        publicURL
-        name
-      }
     }
   `)
 
@@ -112,7 +108,7 @@ const Bio = () => {
               title="LinkedIn"
             />
             <SocialIcon
-              to={data.pdf.publicURL}
+              to="/kelly-resume.pdf"
               Icon={FaFileAlt}
               title="Resume"
             />
