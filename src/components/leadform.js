@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import addToMailchimp from "gatsby-plugin-mailchimp"
 import { rhythm } from "../utils/typography"
 
 const BotsOnly = styled.div`
@@ -22,17 +23,43 @@ const EmailInput = styled.input`
   border: solid 1px #ddd;
 `
 const Submit = styled.button`
+  position: relative;
   border-radius: 3px;
   border: solid 1px #ddd;
   background-color: #4078c0;
   color: #eee;
   cursor: pointer;
+  text-align: center;
+  width: ${rhythm(5)};
 
   &[disabled] {
-    background-color: #999;
+    background-color: #7aa1d3;
     cursor: default;
   }
 `
+
+function ButtonText({ isLoading, isDone }) {
+  const generateStyle = isVisible => {
+    return {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      top: 0,
+      width: "100%",
+      height: "100%",
+      textAlign: "center",
+      visibility: isVisible ? "visible" : "hidden",
+    }
+  }
+
+  return (
+    <React.Fragment>
+      <span style={generateStyle(!isLoading && !isDone)}>Subscribe</span>
+      <span style={generateStyle(isLoading)}>Submitting&hellip;</span>
+      <span style={generateStyle(isDone)}>Submitted</span>
+    </React.Fragment>
+  )
+}
 
 export default class LeadForm extends React.Component {
   constructor(...args) {
@@ -41,18 +68,28 @@ export default class LeadForm extends React.Component {
     this.state = {
       email: "",
       hasSubmitted: false,
+      isSubmitting: false,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(event) {
-    event.target.submit()
-    this.setState({ hasSubmitted: true })
+  async handleSubmit(event) {
+    event.preventDefault()
+
+    this.setState({ isSubmitting: true })
+
+    await addToMailchimp(this.state.email)
+
+    this.setState({
+      hasSubmitted: true,
+      isSubmitting: false,
+    })
   }
 
   render() {
-    const { hasSubmitted, email } = this.state
+    const { hasSubmitted, isSubmitting, email } = this.state
+
     return (
       <div>
         <form
@@ -78,9 +115,9 @@ export default class LeadForm extends React.Component {
                 type="submit"
                 value="Subscribe"
                 name="subscribe"
-                disabled={hasSubmitted}
+                disabled={hasSubmitted || !email}
               >
-                Subscribe
+                <ButtonText isLoading={isSubmitting} isDone={hasSubmitted} />
               </Submit>
             </HorizontalLayout>
           </div>

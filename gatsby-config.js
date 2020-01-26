@@ -146,5 +146,12 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-catch-links`,
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint:
+          "https://davekelly.us4.list-manage.com/subscribe/post?u=f29dc9ea3d2d850679ed744d2&id=22ceeff94f",
+      },
+    },
   ],
 }
