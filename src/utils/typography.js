@@ -1,10 +1,16 @@
 import Typography from "typography"
-import Theme from "typography-theme-github"
+import theme from "typography-theme-github"
 import CodePlugin from "typography-plugin-code"
 
-Theme.plugins = [new CodePlugin()]
+theme.plugins = [new CodePlugin()]
 
-const typography = new Typography(Theme)
+theme.overrideThemeStyles = ({ rhythm }, options) => ({
+  a: {
+    fontWeight: "bold",
+  },
+})
+
+const typography = new Typography(theme)
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {
