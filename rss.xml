@@ -1,4 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dave's Tech Blog]]></title><description><![CDATA[Dave's approach to building web applications.]]></description><link>https://davekelly.me</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 26 Jan 2020 17:49:44 GMT</lastBuildDate><item><title><![CDATA[How I Use React Components]]></title><description><![CDATA[When building the frontend of a web application using React, it’s sometimes difficult to determine how to organize React components. React’s…]]></description><link>https://davekelly.me/posts/react-components/</link><guid isPermaLink="false">https://davekelly.me/posts/react-components/</guid><pubDate>Sat, 25 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;When building the frontend of a web application using React, it’s sometimes difficult to determine how to organize React components. React’s component API isn’t opinionated in such a way that guides developers toward a “correct” way to scope component functionality. When adding functionality to an app, it’s up to the developer to decide whether the new functionality is best implemented as a new component or as an addition to an existing component.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dave's Tech Blog]]></title><description><![CDATA[Dave's approach to building web applications.]]></description><link>https://davekelly.me</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 08 Dec 2022 16:58:03 GMT</lastBuildDate><item><title><![CDATA[Learn Basic Shell Commands]]></title><description><![CDATA[_Prereq: install iTerm2 Open iterm2 and try out a few commands:  print the absolute path of the current directory.  change directory to the…]]></description><link>https://davekelly.me/posts/basic-shell-commands/</link><guid isPermaLink="false">https://davekelly.me/posts/basic-shell-commands/</guid><pubDate>Thu, 08 Dec 2022 00:00:02 GMT</pubDate><content:encoded>&lt;p&gt;_Prereq: install &lt;a href=&quot;https://iterm2.com/&quot;&gt;iTerm2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Open iterm2 and try out a few commands:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;pwd&lt;/code&gt; print the absolute path of the current directory.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;cd&lt;/code&gt; change directory to the specified path. If no path is specified, navigates to your home directory. A path can be specified to this command as a command line argument. For example: &lt;code class=&quot;language-text&quot;&gt;cd mydir&lt;/code&gt;. In a shell, terms are separated by whitespace. The first term specifies the command to run. Additional terms are called “arguments” and can be used to control the behavior of the command.&lt;/p&gt;
+&lt;p&gt;Note about paths: &lt;em&gt;Absolute paths&lt;/em&gt; always resolve to the same resource regardless of where you are when referencing the path. &lt;em&gt;Relative paths&lt;/em&gt; resolve to the resource based on where you currently are.&lt;/p&gt;
+&lt;p&gt;Consider the following directory structure&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;/
+  Users
+    dan
+      Desktop
+      Documents
+        project1
+        project2
+        my project&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you are currently in your home directory &lt;code class=&quot;language-text&quot;&gt;/Users/dan&lt;/code&gt;, and want to navigate to the &lt;code class=&quot;language-text&quot;&gt;project1&lt;/code&gt; directory, you could take multiple approaches:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Absolute path: &lt;code class=&quot;language-text&quot;&gt;cd /Users/dan/Documents/project1&lt;/code&gt; — This has the benefit of working from any current working directory, but can also be a lot to type depending on the path&lt;/li&gt;
+&lt;li&gt;Relative path: &lt;code class=&quot;language-text&quot;&gt;cd Documents/project1&lt;/code&gt; — This is more concise, but requires you to know how to get to the directory from where you currently are&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are a couple special “paths”:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;/&lt;/code&gt; root directory - Think of your filesystem like a tree: all files in your filesystem are connected to the root directory through one or more parent directories&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt; current directory — This can be useful for relative paths: &lt;code class=&quot;language-text&quot;&gt;cd ./Documents/project1&lt;/code&gt; is equivalent to &lt;code class=&quot;language-text&quot;&gt;cd Documents/project1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;..&lt;/code&gt; parent directory - This is important in traversing closer to the root directory:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Try &lt;code class=&quot;language-text&quot;&gt;cd ..&lt;/code&gt; — Use &lt;code class=&quot;language-text&quot;&gt;pwd&lt;/code&gt; to confirm which directory you are now in&lt;/li&gt;
+&lt;li&gt;You can chain these together to ascend multiple levels at once: Try &lt;code class=&quot;language-text&quot;&gt;cd ../..&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt; home directory — This is a reference to your user’s directory. If your username is &lt;code class=&quot;language-text&quot;&gt;dan&lt;/code&gt;, the command &lt;code class=&quot;language-text&quot;&gt;cd ~&lt;/code&gt; will navigate to &lt;code class=&quot;language-text&quot;&gt;/Users/dan&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Question: What are three different ways to change to the home directory?&lt;/p&gt;
+&lt;p&gt;Try to navigate to a directory with a space in the name: For example: &lt;code class=&quot;language-text&quot;&gt;cd Documents/my project&lt;/code&gt;
+Normally, we’d expect to not see much feedback from the cd command. For most shell commans, &lt;em&gt;no news is good news&lt;/em&gt;. If you don’t see any feedback in your terminal, it usually means things are working correctly. In this case however, you might get an error!&lt;/p&gt;
+&lt;p&gt;Remember: the shell uses whitespace to separate arguments for the cd command. Our directory has a space in the name so when we specify the directory, the shell treats it as two arguments. We need to “escape” the space in the name to tell the shell that the space is part of the same argument. We use the backslash &lt;code class=&quot;language-text&quot;&gt;\&lt;/code&gt; to escape special characters: &lt;code class=&quot;language-text&quot;&gt;cd Documents/my\ project&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ls&lt;/code&gt; TODO&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mkdir&lt;/code&gt; TODO&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;env&lt;/code&gt; TODO&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ps&lt;/code&gt; TODO&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;kill&lt;/code&gt; TODO&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;open&lt;/code&gt; TODO&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learn Web App Development — "Syllabus"]]></title><description><![CDATA[I believe that in order to become a successful web application developer, it is important to start with a strong understanding of the…]]></description><link>https://davekelly.me/posts/learn-web-dev/</link><guid isPermaLink="false">https://davekelly.me/posts/learn-web-dev/</guid><pubDate>Thu, 08 Dec 2022 00:00:01 GMT</pubDate><content:encoded>&lt;p&gt;I believe that in order to become a successful web application developer, it is important to start with a strong understanding of the fundamentals. This understanding can be applied toward learning more advanced topics and picking up new technologies and is more effective than following the latest tutorials to “Build X using Y framework”.&lt;/p&gt;
+&lt;h2&gt;The most important things to learn&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;In chronological order&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;basic shell commands&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;html&lt;/li&gt;
+&lt;li&gt;css&lt;/li&gt;
+&lt;li&gt;javascript&lt;/li&gt;
+&lt;li&gt;http, sockets, basic network topology&lt;/li&gt;
+&lt;li&gt;serverside programming&lt;/li&gt;
+&lt;li&gt;sql&lt;/li&gt;
+&lt;li&gt;security&lt;/li&gt;
+&lt;li&gt;a currently popular web framework (frontend and backend)&lt;/li&gt;
+&lt;li&gt;basic design principles&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you’ve made it this far, you should be able to build a web app!&lt;/p&gt;
+&lt;h2&gt;Advanced topics&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;architecture (frontend and backend)&lt;/li&gt;
+&lt;li&gt;writing maintainable code&lt;/li&gt;
+&lt;li&gt;database performance and tuning&lt;/li&gt;
+&lt;li&gt;devops&lt;/li&gt;
+&lt;li&gt;typescript&lt;/li&gt;
+&lt;li&gt;nosql&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you’ve made it this far and have shipped multiple non-trivial web apps, you should be able to get a job as a senior software engineer&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How I Use React Components]]></title><description><![CDATA[When building the frontend of a web application using React, it’s sometimes difficult to determine how to organize React components. React’s…]]></description><link>https://davekelly.me/posts/react-components/</link><guid isPermaLink="false">https://davekelly.me/posts/react-components/</guid><pubDate>Sat, 25 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;When building the frontend of a web application using React, it’s sometimes difficult to determine how to organize React components. React’s component API isn’t opinionated in such a way that guides developers toward a “correct” way to scope component functionality. When adding functionality to an app, it’s up to the developer to decide whether the new functionality is best implemented as a new component or as an addition to an existing component.&lt;/p&gt;
 &lt;h2&gt;What I Optimize For&lt;/h2&gt;
 &lt;p&gt;The number one thing I optimize for when building applications is developer experience. Having built several React applications that are now used by end users in a production environment, I’ve found it’s rare to require optimization at the component level (most of my application performance bottlenecks tend to pop up in the backend or API layer). Addressing bottlenecks when they surface is much easier for me when I have already focused on developer experience. Premature optimization based on speculation about what &lt;em&gt;might&lt;/em&gt; be slow often leads to a codebase that is less intuitive and harder to follow, and distracts from focus on the product.&lt;/p&gt;
 &lt;p&gt;My method of component scoping and organization helps to optimize for a codebase that is easier to follow and maintain. These components lend themselves fairly easily to reuse, often across different contexts.&lt;/p&gt;
