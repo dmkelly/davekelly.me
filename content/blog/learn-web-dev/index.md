@@ -10,8 +10,8 @@ I believe that in order to become a successful web application developer, it is 
 
 _In chronological order_
 
-1. basic shell commands
-1. git
+1. [basic shell commands](/posts/basic-shell-commands/)
+1. [git](/posts/basic-git-usage/)
 1. html
 1. css
 1. javascript
@@ -20,6 +20,8 @@ _In chronological order_
 1. sql
 1. security
 1. a currently popular web framework (frontend and backend)
+1. testing
+1. ci/cd
 1. basic design principles
 
 If you've made it this far, you should be able to build a web app!
