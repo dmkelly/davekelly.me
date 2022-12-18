@@ -251,6 +251,15 @@ $ git commit -m "Merge branch add-changelog into main"
 
 We can use `git log` to open the revision history for the repository.
 
+Now that our changes have been merged, we no longer need to maintain a reference to the feature branches. Let's do some cleanup by deleting our feature branches.
+
+```sh
+$ git branch -d add-changelog
+Deleted branch add-changelog (was abb0af6).
+$ git branch -d add-codeowners
+Deleted branch add-codeowners (was 5f899ef).
+```
+
 Create a new repository in GitHub. Do not choose the option to initialize with a readme, since we've already initialized our repository in this exercise. Copy the command that GitHub provides to add the remote repository.
 
 Push our changes to GitHub with `git push`.

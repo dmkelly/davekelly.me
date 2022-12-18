@@ -18,7 +18,7 @@ $ echo hello world
 hello world
 ```
 
-_Note:_ in the sample above, the `$` is meant to indicate your command prompt. Lines starting with a `$` in a code block means that is a command that you type. Lines that don't start with a `$` indicate output from a command. In practice, your prompt may look different than a `$`. It's common for the prompt to include your username, the current directory, the name of your machine, or some combination of all three.
+_Note:_ in the sample above, the `$` is meant to indicate your command prompt. Lines starting with a `$` in a code block means that is a command that you type. Do not type the `$` however, only type the command starting after the `$`. Lines that don't start with a `$` indicate output from a command. In practice, your prompt may look different than a `$`. It's common for the prompt to include your username, the current directory, the name of your machine, or some combination of all three.
 
 `pwd` print the absolute path of the current directory.
 
