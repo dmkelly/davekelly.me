@@ -1,7 +1,165 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dave's Tech Blog]]></title><description><![CDATA[Dave's approach to building web applications.]]></description><link>https://davekelly.me</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 08 Dec 2022 16:58:03 GMT</lastBuildDate><item><title><![CDATA[Learn Basic Shell Commands]]></title><description><![CDATA[_Prereq: install iTerm2 Open iterm2 and try out a few commands:  print the absolute path of the current directory.  change directory to the…]]></description><link>https://davekelly.me/posts/basic-shell-commands/</link><guid isPermaLink="false">https://davekelly.me/posts/basic-shell-commands/</guid><pubDate>Thu, 08 Dec 2022 00:00:02 GMT</pubDate><content:encoded>&lt;p&gt;_Prereq: install &lt;a href=&quot;https://iterm2.com/&quot;&gt;iTerm2&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dave's Tech Blog]]></title><description><![CDATA[Dave's approach to building web applications.]]></description><link>https://davekelly.me</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 18 Dec 2022 08:39:10 GMT</lastBuildDate><item><title><![CDATA[Learn Basic Git usage]]></title><description><![CDATA[Git is a powerful tool for managing multiple revisions of a codebase. As you make changes to files within a codebase, you might be tempted…]]></description><link>https://davekelly.me/posts/basic-git-usage/</link><guid isPermaLink="false">https://davekelly.me/posts/basic-git-usage/</guid><pubDate>Sun, 18 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Git is a powerful tool for managing multiple revisions of a codebase. As you make changes to files within a codebase, you might be tempted to make backup copies of your code in case you break something and want to revert to a working version:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;index.html
+index-final(v2).html
+index-backup1.html
+index-backup2.html&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We want to avoid this! It’s messy and doesn’t scale as you end up with a codebase that has potentially hundreds of files.&lt;/p&gt;
+&lt;p&gt;That’s where Git comes in. Git gives us the ability to set checkpoints called “commits” for our codebase that we can revert to if needed. We can also share these commits across different machines. Git also gives us the ability to merge changes between multiple commits into a new commit. This makes it a powerful collaboration tool and allows us to quickly switch tasks if we need to make multiple changes at once. For example, we might be working on a new feature for our web application when a critical bug is reported that needs to be fixed ASAP. Rather than backing out all our work on the new feature, or rushing to finish the new feature, we can save our feature work to a commit, then go back to the previous commit, fix the bug with a new commit, then merge the fix into our feature work so we don’t write over it as we make new changes.&lt;/p&gt;
+&lt;p&gt;Let’s get started!&lt;/p&gt;
+&lt;p&gt;Make a new directory for our web application: &lt;code class=&quot;language-text&quot;&gt;mkdir -p ~/Source/webapp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Change into the app directory: &lt;code class=&quot;language-text&quot;&gt;cd ~/Source/webapp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Initialize a new Git repository&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ webapp git init
+Initialized empty Git repository in /Users/dan/Source/webapp/.git/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Git will now track changes to files within the webapp repository. It created a hidden directory &lt;code class=&quot;language-text&quot;&gt;.git&lt;/code&gt; within our project directory where it will keep track of commits and general configuration for the project. Since it’s just a directory and files, you can open the &lt;code class=&quot;language-text&quot;&gt;.git&lt;/code&gt; directory and look around. Be careful about making any changes! In practice, you likely won’t be directly modifying anything in this directory yourself.&lt;/p&gt;
+&lt;p&gt;Back in our &lt;code class=&quot;language-text&quot;&gt;webapp&lt;/code&gt; directory, let’s open VSCode and start making some edits: &lt;code class=&quot;language-text&quot;&gt;code .&lt;/code&gt; Opens VSCode in the current directory.&lt;/p&gt;
+&lt;p&gt;Create a new file in VSCode called &lt;code class=&quot;language-text&quot;&gt;README.md&lt;/code&gt;. We’ll use this to convey any important information about our webapp project. Write a few sentences to describe the new project. The &lt;code class=&quot;language-text&quot;&gt;md&lt;/code&gt; file extension indicates that this is a markdown file. Markdown is a file format that is meant to be human readable text, but uses special characters to denote special meaning:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lines starting with &lt;code class=&quot;language-text&quot;&gt;#&lt;/code&gt; are treated as top-level headings&lt;/li&gt;
+&lt;li&gt;Lines starting with &lt;code class=&quot;language-text&quot;&gt;##&lt;/code&gt; are treated as secondary headings&lt;/li&gt;
+&lt;li&gt;Text surrounded by a single underscore is emphasized: &lt;code class=&quot;language-text&quot;&gt;_text to emphasize_&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Text surrounded by two underscores is strongly emphasized: &lt;code class=&quot;language-text&quot;&gt;__strongly__ emphasized&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Links to URLs can be embedded: &lt;code class=&quot;language-text&quot;&gt;[link text](https://url-to-content.com)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For now, let’s add the following text to our README.md file:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token title important&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;#&lt;/span&gt; My First Web Application&lt;/span&gt;
+
+This repository contains the code for my first web application.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Save the file and switch back to iterm2.&lt;/p&gt;
+&lt;p&gt;Git can tell us of any high level file changes with &lt;code class=&quot;language-text&quot;&gt;git status&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to include in what will be committed)
+	README.md
+
+nothing added to commit but untracked files present (use &amp;quot;git add&amp;quot; to track)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This gives us a quick overview of the state of our repository. We’re currently using the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch and have not created any checkpoints or commits yet in this repository. Git identified a new file &lt;code class=&quot;language-text&quot;&gt;README.md&lt;/code&gt; that is considered “untracked” because it hasn’t been included in any commits yet.&lt;/p&gt;
+&lt;p&gt;Let’s create our first commit and start tracking changes for the README.md file:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git add README.md
+$ git commit -m &amp;quot;Initial readme file&amp;quot;
+[main (root-commit) 0388158] Initial readme file
+ 1 file changed, 3 insertions(+)
+ create mode 100644 README.md&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git add README.md&lt;/code&gt; tells git to start tracking changes made to the README.md file. &lt;code class=&quot;language-text&quot;&gt;git add&lt;/code&gt; can take any path within the repository. In practice, you might find youself using &lt;code class=&quot;language-text&quot;&gt;git add .&lt;/code&gt; to track changes to all files in the repository.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git commit -m &amp;quot;Initial readme file&amp;quot;&lt;/code&gt; tells git to create a new commit or checkpoint for the state of all files that are currently tracked in the repository. The commit accepts a message that we provide with the &lt;code class=&quot;language-text&quot;&gt;-m&lt;/code&gt; flag. This message is used to give ourselves context about what changes were made in the commit. Over time, we can use these messages to see a history of our progress in developing the app.&lt;/p&gt;
+&lt;p&gt;The output from the commit tells us that the commit was applied to the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch. It also includes a hash of the changes (&lt;code class=&quot;language-text&quot;&gt;0388158&lt;/code&gt; in the example output) and the commit message. Below the message, the output gives a summary of the changes that were committed.&lt;/p&gt;
+&lt;h2&gt;What is a branch in Git?&lt;/h2&gt;
+&lt;p&gt;Our &lt;code class=&quot;language-text&quot;&gt;git status&lt;/code&gt; command above just told us we’re currently on the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch, but what does this actually mean? If we think about how we’ll be making changes to our codebase, we could be working on multiple features and bug fixes in parallel at any given time. We want to work on each change independently of the other changes however. In the example scenario at the beginning of this post, we described using multiple commits for different changes. What if we wanted to use more than one checkpoint when developing a feature? It’s a good practice to commit often. Think of it like setting a checkpoint in a video game. If things get messy, you can safely return to the checkpoint. Branches allow us to separate our work in progress by feature. We can create multiple commits on a given branch, then merge the feature branch into the main branch when it’s done to apply changes from all of the commits of that branch.&lt;/p&gt;
+&lt;p&gt;Let’s create a new branch to add a &lt;a href=&quot;https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners&quot;&gt;CODEOWNERS&lt;/a&gt; file. The &lt;code class=&quot;language-text&quot;&gt;CODEOWNERS&lt;/code&gt; file is used to identify the maintains of the code in the repository. This is helpful for providing contact information of subject matter experts in larger organizations where the maintainers of the codebase might not always be immediately known by everyone.&lt;/p&gt;
+&lt;p&gt;First, let’s make a new branch for this change. It’s important not to work on changes directly on the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch (this defeats the purpose)! &lt;code class=&quot;language-text&quot;&gt;git checkout -b add-codeowners&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;git checkout&lt;/code&gt; command is used for switching to different commits. We can specify commits to &lt;code class=&quot;language-text&quot;&gt;git checkout&lt;/code&gt; in a few different ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use the name of a branch like &lt;code class=&quot;language-text&quot;&gt;git checkout main&lt;/code&gt; (most common)&lt;/li&gt;
+&lt;li&gt;Use a commit hash &lt;code class=&quot;language-text&quot;&gt;git checkout 0388158&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relative to the history&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;git checkout HEAD&lt;/code&gt; (checkout the latest commit)&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;git checkout HEAD~1&lt;/code&gt; (checkout the commit before the latest commit)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Our use of the &lt;code class=&quot;language-text&quot;&gt;-b&lt;/code&gt; flag tells &lt;code class=&quot;language-text&quot;&gt;git checkout&lt;/code&gt; to switch to a new branch off of our current repository state named &lt;code class=&quot;language-text&quot;&gt;add-codeowners&lt;/code&gt;. The &lt;code class=&quot;language-text&quot;&gt;checkout&lt;/code&gt; command does not create any commits!&lt;/p&gt;
+&lt;p&gt;Add the following to the CODEOWNERS file, substituting your email address for the sample email below:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;* your@email.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;While we’re editing files in VSCode, let’s add the following note to the bottom of our README.md file to help collaborators navigate our repository:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Maintainers are listed in the CODEOWNERS file.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Save your changes and return to iterm.&lt;/p&gt;
+&lt;p&gt;Let’s get our bearings with &lt;code class=&quot;language-text&quot;&gt;git branch&lt;/code&gt;. This lists the available branches in the repository and indicates the current branch.&lt;/p&gt;
+&lt;p&gt;Let’s check on our outstanding changes with &lt;code class=&quot;language-text&quot;&gt;git status&lt;/code&gt;. At this point, it identifies that we’ve made changes to our README.md file and have also added a new CODEOWNERS file.&lt;/p&gt;
+&lt;p&gt;Use &lt;code class=&quot;language-text&quot;&gt;git diff&lt;/code&gt; to show all outstanding changes in files that are already tracked. The new line that we added to the readme should be listed in the diff. The &lt;code class=&quot;language-text&quot;&gt;+&lt;/code&gt; at the beginning of the line indicates that the line will be added to the file (a leading &lt;code class=&quot;language-text&quot;&gt;-&lt;/code&gt; would indicate the line will be removed). Note that changes in the CODEOWNERS file aren’t listed in the diff. This is because the CODEOWNERS file hasn’t yet been added for tracking.&lt;/p&gt;
+&lt;p&gt;Use the &lt;code class=&quot;language-text&quot;&gt;git add&lt;/code&gt; command to add the changes to both files. Do you remember how to do this in one command?&lt;/p&gt;
+&lt;p&gt;If you’ve successfully added both files to tracking, you should see the following when running the &lt;code class=&quot;language-text&quot;&gt;git status&lt;/code&gt; command&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git status
+On branch add-codeowners
+Changes to be committed:
+  (use &amp;quot;git restore --staged &amp;lt;file&amp;gt;...&amp;quot; to unstage)
+	new file:   CODEOWNERS
+	modified:   README.md&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We still don’t have a new checkpoint yet, let’s create the checkpoint now: &lt;code class=&quot;language-text&quot;&gt;git commit -m &amp;quot;Add CODEOWNERS&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now that we have a commit saved, let’s go back to our &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch and make another change. Use the &lt;code class=&quot;language-text&quot;&gt;git checkout&lt;/code&gt; command to switch toe the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch (hint: the exact command is mentioned earlier in this post).&lt;/p&gt;
+&lt;p&gt;We can confirm that we switched to the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch using the &lt;code class=&quot;language-text&quot;&gt;git branch&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;Checkout a new branch called &lt;code class=&quot;language-text&quot;&gt;add-changelog&lt;/code&gt; (hint: we used the command to checkout a new branch earlier when we made a change to add the CODEOWNERS file). Confirm that we have switched to the new branch using the &lt;code class=&quot;language-text&quot;&gt;git branch&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;Make a new file called CHANGELOG.md and add the following to it:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Added CHANGELOG&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add the following line of text to the bottom of the README.md file:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;Changes are tracked using the CHANGELOG&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Best practices for maintaining a changelog would use the &lt;a href=&quot;https://keepachangelog.com/&quot;&gt;keep a changelog&lt;/a&gt; approach, but we just need something lightweight for this exercise.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git add&lt;/code&gt; the changes to tracking and commit the changes with a meaningful commit message.&lt;/p&gt;
+&lt;p&gt;After adding and committing the changes, &lt;code class=&quot;language-text&quot;&gt;git status&lt;/code&gt; should report that there are no outstanding changes:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git status
+On branch add-changelog
+nothing to commit, working tree clean&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We’ve made two distinct changes so far, but at this point these changes are on separate feature branches. We can access each change by switching to the respective branch, but now that our changes are complete, we want them all to be applied on the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch.&lt;/p&gt;
+&lt;p&gt;Let’s merge the first change into the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch. First switch to the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch.&lt;/p&gt;
+&lt;p&gt;From the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch, merge changes from our codeowners branch: &lt;code class=&quot;language-text&quot;&gt;git merge add-codeowners&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git merge add-codeowners
+Updating 0388158..5f899ef
+Fast-forward
+ CODEOWNERS | 1 +
+ README.md  | 2 ++
+ 2 files changed, 3 insertions(+)
+ create mode 100644 CODEOWNERS&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The command output shows which changes are applied.&lt;/p&gt;
+&lt;p&gt;Now let’s merge our changes to add a changelog into the &lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt; branch:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git merge add-changelog
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This output doesn’t show our changes being applied. What happened?!&lt;/p&gt;
+&lt;p&gt;We’ve encountered a merge conflict! Git wasn’t able to automatically apply the changes we made in the README.md file because we made different changes in the same place in README.md file in two parallel branches. Git needs our help to determine how to handle these conflicting changes. In this case, we only have a conflict in the README.md file, but when merging larger changes, we could have conflicts in many files. Git will list every file with conflicts here. We need to resolve each conflict before finishing the merge.&lt;/p&gt;
+&lt;p&gt;Open the README.md file in VSCode and notice that Git has altered the file to indicate the conflicts:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# My First Web Application
+
+This repository contains the code for my first web application.
+
+&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
+Maintainers are listed in the CODEOWNERS file.
+=======
+Changes are tracked in the changelog
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; add-changelog&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We need to edit this file to remove any conflicts. In this case, we want to keep both changes, so we can safely remove the text added by Git. Our README should look something like this now:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# My First Web Application
+
+This repository contains the code for my first web application.
+
+Maintainers are listed in the CODEOWNERS file.
+
+Changes are tracked in the changelog&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git status&lt;/code&gt; tells us that we still have some outstanding changes:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run &amp;quot;git commit&amp;quot;)
+  (use &amp;quot;git merge --abort&amp;quot; to abort the merge)
+
+Changes to be committed:
+	new file:   CHANGELOG.md
+
+Unmerged paths:
+  (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to mark resolution)
+	both modified:   README.md&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We need to add and commit our change to resolve the conflict:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git add README.md
+$ git commit -m &amp;quot;Merge branch add-changelog into main&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can use &lt;code class=&quot;language-text&quot;&gt;git log&lt;/code&gt; to open the revision history for the repository.&lt;/p&gt;
+&lt;p&gt;Create a new repository in GitHub. Do not choose the option to initialize with a readme, since we’ve already initialized our repository in this exercise. Copy the command that GitHub provides to add the remote repository.&lt;/p&gt;
+&lt;p&gt;Push our changes to GitHub with &lt;code class=&quot;language-text&quot;&gt;git push&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Git supports hooks that we can tap into as a way of executing commands during certain events. Later on, we can tap into these hooks to automatically run tests to make sure our changes are working correctly and then deploy the changes to a server if everything looks good.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learn Basic Shell Commands]]></title><description><![CDATA[Prereq: install iTerm2
+Prereq: install VSCode Open iterm2 and try out a few commands: When you open iterm2, it creates a new instance of a…]]></description><link>https://davekelly.me/posts/basic-shell-commands/</link><guid isPermaLink="false">https://davekelly.me/posts/basic-shell-commands/</guid><pubDate>Thu, 08 Dec 2022 00:00:02 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;Prereq&lt;/em&gt;: install &lt;a href=&quot;https://iterm2.com/&quot;&gt;iTerm2&lt;/a&gt;
+&lt;em&gt;Prereq&lt;/em&gt;: install &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VSCode&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Open iterm2 and try out a few commands:&lt;/p&gt;
+&lt;p&gt;When you open iterm2, it creates a new instance of a shell where you’ll be able to run commands. The shell is responsible for accepting your input from the keyboard, interpretting that input, executing the appropriate commands based on your input, and surfacing any output from those commands.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;echo&lt;/code&gt; prints its arguments to standard output. When you enter &lt;code class=&quot;language-text&quot;&gt;echo hello world&lt;/code&gt; on the command line, the first “token”, &lt;code class=&quot;language-text&quot;&gt;echo&lt;/code&gt; is the name of the command to execute. In a shell, tokens are separated by whitespace. Additional tokens are called “arguments” and can be used to control the behavior of the command. “Standard output” refers to the destination where commands can write feedback on their execution. In this case, it’s written back to the shell in your terminal. Type &lt;code class=&quot;language-text&quot;&gt;echo hello world&lt;/code&gt; and press enter:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ echo hello world
+hello world&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; in the sample above, the &lt;code class=&quot;language-text&quot;&gt;$&lt;/code&gt; is meant to indicate your command prompt. Lines starting with a &lt;code class=&quot;language-text&quot;&gt;$&lt;/code&gt; in a code block means that is a command that you type. Lines that don’t start with a &lt;code class=&quot;language-text&quot;&gt;$&lt;/code&gt; indicate output from a command. In practice, your prompt may look different than a &lt;code class=&quot;language-text&quot;&gt;$&lt;/code&gt;. It’s common for the prompt to include your username, the current directory, the name of your machine, or some combination of all three.&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;pwd&lt;/code&gt; print the absolute path of the current directory.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;cd&lt;/code&gt; change directory to the specified path. If no path is specified, navigates to your home directory. A path can be specified to this command as a command line argument. For example: &lt;code class=&quot;language-text&quot;&gt;cd mydir&lt;/code&gt;. In a shell, terms are separated by whitespace. The first term specifies the command to run. Additional terms are called “arguments” and can be used to control the behavior of the command.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;cd&lt;/code&gt; change directory to the specified path. If no path is specified, navigates to your home directory. A path can be specified to this command as a command line argument. For example: &lt;code class=&quot;language-text&quot;&gt;cd mydir&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Note about paths: &lt;em&gt;Absolute paths&lt;/em&gt; always resolve to the same resource regardless of where you are when referencing the path. &lt;em&gt;Relative paths&lt;/em&gt; resolve to the resource based on where you currently are.&lt;/p&gt;
 &lt;p&gt;Consider the following directory structure&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;/
@@ -34,17 +192,38 @@
 &lt;p&gt;Try to navigate to a directory with a space in the name: For example: &lt;code class=&quot;language-text&quot;&gt;cd Documents/my project&lt;/code&gt;
 Normally, we’d expect to not see much feedback from the cd command. For most shell commans, &lt;em&gt;no news is good news&lt;/em&gt;. If you don’t see any feedback in your terminal, it usually means things are working correctly. In this case however, you might get an error!&lt;/p&gt;
 &lt;p&gt;Remember: the shell uses whitespace to separate arguments for the cd command. Our directory has a space in the name so when we specify the directory, the shell treats it as two arguments. We need to “escape” the space in the name to tell the shell that the space is part of the same argument. We use the backslash &lt;code class=&quot;language-text&quot;&gt;\&lt;/code&gt; to escape special characters: &lt;code class=&quot;language-text&quot;&gt;cd Documents/my\ project&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ls&lt;/code&gt; TODO&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mkdir&lt;/code&gt; TODO&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;env&lt;/code&gt; TODO&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ps&lt;/code&gt; TODO&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;kill&lt;/code&gt; TODO&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;open&lt;/code&gt; TODO&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learn Web App Development — "Syllabus"]]></title><description><![CDATA[I believe that in order to become a successful web application developer, it is important to start with a strong understanding of the…]]></description><link>https://davekelly.me/posts/learn-web-dev/</link><guid isPermaLink="false">https://davekelly.me/posts/learn-web-dev/</guid><pubDate>Thu, 08 Dec 2022 00:00:01 GMT</pubDate><content:encoded>&lt;p&gt;I believe that in order to become a successful web application developer, it is important to start with a strong understanding of the fundamentals. This understanding can be applied toward learning more advanced topics and picking up new technologies and is more effective than following the latest tutorials to “Build X using Y framework”.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ls&lt;/code&gt; Lists the contents of a directory. Without any arguments, will list both files and directories in the current directory. Use &lt;code class=&quot;language-text&quot;&gt;cd&lt;/code&gt; to navigate to a different directory, then type &lt;code class=&quot;language-text&quot;&gt;ls&lt;/code&gt; to list that directory’s contents. &lt;code class=&quot;language-text&quot;&gt;ls&lt;/code&gt; also accepts a path to a directory as an argument. This allows you to list the contents of any directory in a single command without &lt;code class=&quot;language-text&quot;&gt;cd&lt;/code&gt;: Try &lt;code class=&quot;language-text&quot;&gt;ls ~/Documents&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;By default, &lt;code class=&quot;language-text&quot;&gt;ls&lt;/code&gt; doesn’t include hidden files and directories in it’s output. A file or directory can be hidden by prefixing its name with a &lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt;. To see hidden files in a directory, we can specify the &lt;code class=&quot;language-text&quot;&gt;-a&lt;/code&gt; flag as an argument to the &lt;code class=&quot;language-text&quot;&gt;ls&lt;/code&gt; command. Try &lt;code class=&quot;language-text&quot;&gt;ls -a ~&lt;/code&gt; to see both visible and hidden files and directories in your home directory. Multiple flags can be specified at the same time. For example, &lt;code class=&quot;language-text&quot;&gt;ls -aS1&lt;/code&gt; will list the contents of a directory, including hidden files and directories, sorted by size (descending), and print each file or directory on a separate line. Another way of writing this could be &lt;code class=&quot;language-text&quot;&gt;ls -a -S -1&lt;/code&gt;. Flags can often be specified in any order.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mkdir&lt;/code&gt; Makes a new directory, accepts the directory name as an argument: Try: &lt;code class=&quot;language-text&quot;&gt;mkdir my_directory&lt;/code&gt; (where &lt;em&gt;my&lt;/em&gt;directory_ is the name of the directory you’d like to create), then verify that the directory was created: &lt;code class=&quot;language-text&quot;&gt;ls&lt;/code&gt;. Navigate into the new directory with &lt;code class=&quot;language-text&quot;&gt;cd my_directory&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can make several nested directories at once by specifying the &lt;code class=&quot;language-text&quot;&gt;-p&lt;/code&gt; flag and a path as an argument: &lt;code class=&quot;language-text&quot;&gt;mkdir -p my/deeply/nested/directories&lt;/code&gt; would create a structure that looks like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;my
+  deeply
+    nested
+      directories&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;env&lt;/code&gt; The shell provides details about the “environment” that are available commands that we run. &lt;code class=&quot;language-text&quot;&gt;env&lt;/code&gt; lists those environment details. Try out the &lt;code class=&quot;language-text&quot;&gt;env&lt;/code&gt; command without any arguments. You’ll probably notice that it prints out a list of lots of text. Each item in this list is called an “environment variable”. The item is actually a key-value pair separated by an &lt;code class=&quot;language-text&quot;&gt;=&lt;/code&gt; character. The token on the left side of the = is the name of the environment variable. It’s a convention to name environment variables using all uppercase characters, but variables can be named using lowercase characters, numbers, or the underscore (&lt;code class=&quot;language-text&quot;&gt;_&lt;/code&gt;) character. A variable cannot start with a number however. The token on the right side of the = is the value of the variable. This can be anything! We reference variables by adding a &lt;code class=&quot;language-text&quot;&gt;$&lt;/code&gt; to their name.&lt;/p&gt;
+&lt;p&gt;You’ll probably see an environment variable called &lt;code class=&quot;language-text&quot;&gt;PATH&lt;/code&gt; in the list. This is used by the shell to find the commands we’ve been using! Each command is an executable file somewhere on our filesystem. When we type the command, the shell finds that file and executes it. The &lt;code class=&quot;language-text&quot;&gt;PATH&lt;/code&gt; variable is a colon-delimited list of paths to directories that the shell will use to find an executable file with the same name as the commands we enter. If you list the contents of each of the directories in the &lt;code class=&quot;language-text&quot;&gt;$PATH&lt;/code&gt;, you’ll find all of the commands we’re using plus A LOT more.&lt;/p&gt;
+&lt;p&gt;Let’s put some environment variables into practice:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ echo The current user is $USER and its home directory is located at $HOME
+The current user is dan and its home directory is located at /Users/dan&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can add a new variable to the environment using the &lt;code class=&quot;language-text&quot;&gt;export&lt;/code&gt; command:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ export MY_VAR=&amp;quot;My environment variable&amp;quot;
+$ echo $MY_VAR
+My environment variable&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; We’re including quotes around the environment variable value because it contains whitespace. We use quotes to make sure the shell treats the text between the quotes as a single token.&lt;/p&gt;
+&lt;p&gt;Environment variables stay in the environment for the duration of the session. If you were to close your terminal window and open a new window, it would no longer have a value.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ echo $MY_VAR
+
+# In a new session, echo will only print a blank line because $MY_VAR is no
+# longer set&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; In a shell, the &lt;code class=&quot;language-text&quot;&gt;#&lt;/code&gt; character is used to denote a comment. Anything following a &lt;code class=&quot;language-text&quot;&gt;#&lt;/code&gt; on the same line will be ignored by the shell. This can be useful for writing human-friendly notes.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;open&lt;/code&gt; Accepts a path as an argument and uses the operating system’s default application to open the path. For example, &lt;code class=&quot;language-text&quot;&gt;open my_video.mov&lt;/code&gt; might open the video file using Quicktime. &lt;code class=&quot;language-text&quot;&gt;open index.html&lt;/code&gt; would open the html file using the web browser.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;man&lt;/code&gt; Accepts the name of a command as an argument and prints the manual page for the specified command using a program called &lt;code class=&quot;language-text&quot;&gt;less&lt;/code&gt;. The manual page lists a synopsis of what the command does as well as all the flags and arguments accepted by the command. Use the &lt;code class=&quot;language-text&quot;&gt;q&lt;/code&gt; key to quit the less program and return to the command line.&lt;/p&gt;
+&lt;p&gt;Let’s add support for opening VSCode from the command line. Open VSCode and press &lt;code class=&quot;language-text&quot;&gt;cmd+shift+P&lt;/code&gt; to open the quick actions bar. Type &lt;code class=&quot;language-text&quot;&gt;Shell command&lt;/code&gt; and select “Install ‘code’ command in PATH”. This will allow us to open VSCode from the command line by typing &lt;code class=&quot;language-text&quot;&gt;code&lt;/code&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learn Web App Development — "Syllabus"]]></title><description><![CDATA[I believe that in order to become a successful web application developer, it is important to start with a strong understanding of the…]]></description><link>https://davekelly.me/posts/learn-web-dev/</link><guid isPermaLink="false">https://davekelly.me/posts/learn-web-dev/</guid><pubDate>Thu, 08 Dec 2022 00:00:01 GMT</pubDate><content:encoded>&lt;p&gt;I believe that in order to become a successful web application developer, it is important to start with a strong understanding of the fundamentals. This understanding can be applied toward learning more advanced topics and picking up new technologies and is more effective than following the latest tutorials to “Build X using Y framework”.&lt;/p&gt;
 &lt;h2&gt;The most important things to learn&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;In chronological order&lt;/em&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;basic shell commands&lt;/li&gt;
-&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/basic-shell-commands/&quot;&gt;basic shell commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/basic-git-usage/&quot;&gt;git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;html&lt;/li&gt;
 &lt;li&gt;css&lt;/li&gt;
 &lt;li&gt;javascript&lt;/li&gt;
@@ -53,6 +232,8 @@ Normally, we’d expect to not see much feedback from the cd command. For most s
 &lt;li&gt;sql&lt;/li&gt;
 &lt;li&gt;security&lt;/li&gt;
 &lt;li&gt;a currently popular web framework (frontend and backend)&lt;/li&gt;
+&lt;li&gt;testing&lt;/li&gt;
+&lt;li&gt;ci/cd&lt;/li&gt;
 &lt;li&gt;basic design principles&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;If you’ve made it this far, you should be able to build a web app!&lt;/p&gt;
